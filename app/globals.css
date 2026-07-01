@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fafaf8;
+  --foreground: #0f0f0f;
+  --brand-yellow: #ffd700;
+  --warm-dark: #171717;
+  --paper: #f2eee6;
+  --clay: #d8d0c2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  background: var(--background);
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  color: var(--foreground);
+  background:
+    linear-gradient(180deg, rgba(255, 215, 0, 0.08), transparent 18rem),
+    var(--background);
+  font-family: var(--font-poppins), sans-serif;
+}
+
+::selection {
+  color: #0f0f0f;
+  background: rgba(255, 215, 0, 0.72);
+}
+
+a,
+button {
+  touch-action: manipulation;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--brand-yellow);
+  outline-offset: 4px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.noise {
+  position: relative;
+}
+
+.noise::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  background: radial-gradient(circle at 28% 12%, rgba(255, 215, 0, 0.18), transparent 26rem);
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-track-reverse {
+  animation: marquee-reverse 34s linear infinite;
+}
+
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+.headline-mark {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.headline-mark::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0.08em -0.08em 0.02em -0.08em;
+  content: "";
+  background: var(--brand-yellow);
+  transform: skew(-8deg) scaleX(0.94);
+  transform-origin: left center;
+  animation: headline-mark-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.headline-mark[data-tone="dark"]::before {
+  opacity: 0.95;
+}
+
+.hero-video-grain {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.26), transparent 24%),
+    linear-gradient(180deg, rgba(15, 15, 15, 0), rgba(15, 15, 15, 0.18));
+  background-size: auto;
+}
+
+.signal-flow-breathe {
+  animation: signal-flow-breathe 5s ease-in-out infinite;
+  stroke-dasharray: 10 18;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.signal-flow-breathe-delay {
+  animation-delay: 0.9s;
+}
+
+.signal-flow-breathe-late {
+  animation-delay: 1.8s;
+}
+
+.signal-node-breathe {
+  animation: signal-node-breathe 5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes headline-mark-in {
+  from {
+    transform: skew(-8deg) scaleX(0);
+  }
+
+  to {
+    transform: skew(-8deg) scaleX(0.94);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes signal-flow-breathe {
+  0%,
+  100% {
+    opacity: 0.58;
+    stroke-dashoffset: 0;
+  }
+
+  48% {
+    opacity: 1;
+    stroke-dashoffset: -18;
+  }
+}
+
+@keyframes signal-node-breathe {
+  0%,
+  100% {
+    opacity: 0.52;
+    transform: scale(1);
+  }
+
+  48% {
+    opacity: 0.92;
+    transform: scale(1.22);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer utilities {
+  .animate-shimmer-slide {
+    animation: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  }
+
+  .animate-spin-around {
+    animation: spin-around calc(var(--speed) * 2) infinite linear;
+  }
+
+  .animate-shiny-text {
+    animation: shiny-text 8s infinite;
+  }
+}
+
+@keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100% - 100px), 0);
+  }
+}
+
+@keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+  }
+
+  15%,
+  35% {
+    transform: translateZ(0) rotate(90deg);
+  }
+
+  65%,
+  85% {
+    transform: translateZ(0) rotate(270deg);
+  }
+
+  100% {
+    transform: translateZ(0) rotate(360deg);
+  }
+}
+
+@keyframes shiny-text {
+  0%,
+  90%,
+  100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+  }
+
+  30%,
+  60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
+  }
+}

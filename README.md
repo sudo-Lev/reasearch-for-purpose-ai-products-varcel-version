@@ -1,1 +1,1 @@
-# reasearch-for-purpose-ai-products-varcel-version
+# rfp-ai-products
