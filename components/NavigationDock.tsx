@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { DemoRequestButton } from "@/components/DemoRequestButton";
 
 const dockItems = [
   { label: "Platforms", href: "#platforms" },
@@ -33,13 +33,9 @@ export function NavigationDock() {
             </a>
           ))}
         </div>
-        <a
-          href="mailto:hello@researchforpurpose.com?subject=AI%20Platforms%20demo"
-          className="inline-flex min-h-8 shrink-0 items-center justify-center gap-1.5 rounded-full bg-brand-black px-3 text-xs font-bold text-white transition hover:bg-brand-yellow hover:text-brand-black max-[390px]:px-2.5"
-        >
+        <DemoRequestButton variant="dock">
           Demo
-          <ArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
-        </a>
+        </DemoRequestButton>
       </div>
     </nav>
   );

@@ -1,4 +1,4 @@
-import { ButtonLink } from "@/components/ButtonLink";
+import { DemoRequestButton } from "@/components/DemoRequestButton";
 
 export function CTASection() {
   return (
@@ -17,12 +17,9 @@ export function CTASection() {
           </p>
         </div>
         <div className="lg:pb-3">
-          <ButtonLink
-            href="mailto:hello@researchforpurpose.com?subject=AI%20Platforms%20demo"
-            variant="light"
-          >
+          <DemoRequestButton variant="light">
             Talk to our team
-          </ButtonLink>
+          </DemoRequestButton>
         </div>
       </div>
     </section>

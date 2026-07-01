@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronDown, Play, RadioTower, ScanLine } from "lucide-react";
 import { AccentTitle } from "@/components/AccentTitle";
 import { ButtonLink } from "@/components/ButtonLink";
+import { DemoRequestButton } from "@/components/DemoRequestButton";
 import { motion, reveal, stagger } from "@/components/motion";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BorderBeam } from "@/components/ui/border-beam";
@@ -18,12 +19,9 @@ export function HeroSection() {
           <Link href="/aiplatforms" className="font-semibold text-brand-black">
             Research for Purpose
           </Link>
-          <a
-            href="mailto:hello@researchforpurpose.com?subject=AI%20Platforms%20demo"
-            className="hidden min-h-11 items-center rounded-full border border-brand-black/15 px-5 text-sm font-semibold text-brand-black transition hover:border-brand-black/35 hover:bg-white sm:inline-flex"
-          >
+          <DemoRequestButton variant="header">
             Request a demo
-          </a>
+          </DemoRequestButton>
         </header>
 
         <div className="grid gap-8 py-10 sm:py-14 lg:min-h-[calc(100dvh-5rem)] lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-12 lg:py-20">
@@ -60,9 +58,9 @@ export function HeroSection() {
               alone.
             </motion.p>
             <motion.div variants={reveal} className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="mailto:hello@researchforpurpose.com?subject=AI%20Platforms%20demo">
+              <DemoRequestButton>
                 Request a demo
-              </ButtonLink>
+              </DemoRequestButton>
               <ButtonLink href="#platforms" variant="secondary">
                 Explore our AI platforms
               </ButtonLink>
